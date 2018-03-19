@@ -1,0 +1,11 @@
+﻿
+﻿Create a code first database context called ProductDbContext based on the Model Given and seed appropriate data. 
+
+enable-migrations -ContextTypeName Product_Server.Models.ProductDbContext -MigrationsDirectory Migrations\ProductMigrations
+enable-migrations -ContextTypeName Product_Server.Models.ApplicationDbContext -MigrationsDirectory Migrations\ApplicationUserMigrations
+
+add-migration –ConfigurationTypeName Product_Server.Migrations.ApplicationUserMigrations.Configuration "Initial Application Migration"
+add-migration –ConfigurationTypeName Product_Server.Migrations.ProductMigrations.Configuration "Initial Product Migration"
+
+update-database –ConfigurationTypeName Product_Server.Migrations.ApplicationUserMigrations.Configuration 
+update-database –ConfigurationTypeName Product_Server.Migrations.ProductMigrations.Configuration
